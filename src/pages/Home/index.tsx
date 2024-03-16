@@ -6,11 +6,11 @@ import heroImage3 from "../../assets/images/hero-img03.png";
 
 const HomePage = () => {
   return (
-    <>
+    <main className="mb-[10rem]">
       {/** ====== Hero Section ====== */}
 
       <>
-        <section className="pt-[60px] 2xl:h-[800px]">
+        <section className="2xl:h-[800px]">
           <div className="container">
             <div className="flex flex-col lg:flex-row gap-[90px] items-center justify-center">
               {/** ====== Hero Content ====== */}
@@ -70,7 +70,7 @@ const HomePage = () => {
           </div>
         </section>
       </>
-    </>
+    </main>
   );
 };
 export default HomePage;
