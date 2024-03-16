@@ -1,9 +1,10 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { navLinks } from "../../constant/navigationLinks";
 
 const BottomNavbar = () => {
   const navigate = useNavigate();
+  const location = useLocation(); // Get the current location
   const [tooltipVisible, setTooltipVisible] = useState<{
     [key: string]: boolean;
   }>(navLinks.reduce((acc, link) => ({ ...acc, [link.path]: false }), {}));
@@ -27,7 +28,11 @@ const BottomNavbar = () => {
             className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 group"
             onClick={() => handleTooltipToggle(link.path)}
           >
-            {link.icon}
+            {/* Add conditional class to change the icon color when active */}
+            {React.cloneElement(link.icon, {
+              className:
+                location.pathname === link.path ? "text-[#0067FF]" : "",
+            })}
             <span className="sr-only">{link.display}</span>
           </button>
         ))}
