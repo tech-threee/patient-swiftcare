@@ -1,19 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { navLinks } from "../../constant/navigationLinks";
 
 const BottomNavbar = () => {
   const navigate = useNavigate();
-  const location = useLocation(); // Get the current location
-  const [tooltipVisible, setTooltipVisible] = useState<{
-    [key: string]: boolean;
-  }>(navLinks.reduce((acc, link) => ({ ...acc, [link.path]: false }), {}));
+  const location = useLocation();
 
   const handleTooltipToggle = (path: string) => {
-    setTooltipVisible((prev) => ({
-      ...prev,
-      [path]: !prev[path],
-    }));
     navigate(path);
   };
 

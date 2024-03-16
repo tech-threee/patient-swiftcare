@@ -2,6 +2,10 @@ import { Link } from "react-router-dom";
 import AuthButtons from "../../../widgets/Buttons/AuthButtons";
 
 const RegisterForm = () => {
+  const handleAction = () => {
+    console.log("welcome");
+  };
+
   return (
     <div className="h-[100vh] w-full flex flex-col justify-center">
       <div className="p-10 space-y-10">
@@ -74,7 +78,7 @@ const RegisterForm = () => {
           </div>
 
           {/**Button */}
-          <AuthButtons />
+          <AuthButtons handleAction={handleAction} text={"Create an account"} />
 
           {/**Login Question */}
           <div className="flex flex-row items-center space-x-2">
