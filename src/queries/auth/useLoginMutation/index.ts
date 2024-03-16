@@ -5,17 +5,31 @@ import {
   LoginRequest,
   login,
 } from "../../../api/auth.api";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 export const useSendOtpMutation = () => {
+  const navigate = useNavigate();
+
   return useMutation({
     mutationFn: (reqBody: OtpRequest) => {
-      const email = reqBody.email as string;
-      return sendOtp(email).then((res) => res.data);
+      return sendOtp({ email: reqBody.email }).then((res) => res.data); // Pass an object with the email property
     },
     onSuccess: () => {
-      toast.success("OTP sent successfully");
       console.log("Sent");
+
+      toast.success("🦄 OTP sent successfully", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+
+      navigate("/home");
     },
     onError: (error: any) => {
       toast.error("Error Occurred");

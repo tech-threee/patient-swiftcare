@@ -4,7 +4,7 @@ import Header from "../components/Header/Header";
 import RootNavigation from "../routes";
 
 const Layout = () => {
-  const user = false as boolean;
+  const user = true as boolean;
 
   console.log(user);
   return (

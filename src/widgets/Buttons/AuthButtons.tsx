@@ -13,6 +13,7 @@ const AuthButtons: React.FC<AuthButtonsProps> = ({
 }) => {
   const { userCredentials } = useUserCredentials();
 
+  console.log(handleAction);
   return (
     <button
       onClick={() =>
