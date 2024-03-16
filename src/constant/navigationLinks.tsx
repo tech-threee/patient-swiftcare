@@ -2,8 +2,7 @@ import { ReactNode } from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import AppShortcutIcon from "@mui/icons-material/AppShortcut";
-import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
-import CampaignIcon from "@mui/icons-material/Campaign";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 export type NavLinkItem = {
   display: string;
@@ -28,13 +27,8 @@ export const navLinks: NavLinkItem[] = [
     icon: <AppShortcutIcon />,
   },
   {
-    display: "Notification",
-    path: "/notification",
-    icon: <CampaignIcon />,
-  },
-  {
-    display: "Health Tips",
-    path: "/healthTip",
-    icon: <TipsAndUpdatesIcon />,
+    display: "Profile",
+    path: "/profile",
+    icon: <AccountCircleIcon />,
   },
 ];
