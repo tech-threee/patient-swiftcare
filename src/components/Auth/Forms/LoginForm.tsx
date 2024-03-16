@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom";
 import AuthButtons from "../../../widgets/Buttons/AuthButtons";
 import { useSendOtpMutation } from "../../../queries/auth/useLoginMutation/index";
-import { useState } from "react";
+import { useUserCredentials } from "../../../hooks/auth/useUserCrendentials";
 
 const LoginForm = () => {
   const sendOtpMutation = useSendOtpMutation();
-  const [email, setEmail] = useState("");
+  const { userCredentials, setUserCredentials } = useUserCredentials();
 
   const handleSendOtp = (email: string) => {
     sendOtpMutation.mutate({ email });
-    console.log("I goot clicked ");
   };
 
   return (
@@ -30,8 +29,13 @@ const LoginForm = () => {
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="email"
               placeholder="example@gmail.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={userCredentials.email}
+              onChange={(e) =>
+                setUserCredentials({
+                  ...userCredentials,
+                  email: e.target.value,
+                })
+              }
             />
           </div>
 
@@ -62,7 +66,10 @@ const LoginForm = () => {
 
           {/**Button */}
 
-          <AuthButtons text={"Log into account "} />
+          <AuthButtons
+            handleSendOtpAction={handleSendOtp}
+            text={"Log into account "}
+          />
 
           {/**Login Question */}
           <div className="flex flex-row items-center space-x-2">

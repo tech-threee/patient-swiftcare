@@ -24,7 +24,6 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   }, []);
 
   const login = async (username: string) => {
-    // Simulate an API call
     const token = "fake-token";
     const newUser = { username, token };
     setUser(newUser);

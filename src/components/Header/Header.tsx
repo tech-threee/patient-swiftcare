@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
           </ul>
         </div>
 
-        <div className="hidden md:flex">
+        <div className="hidden">
           <h1>todo: Add Profile</h1>
         </div>
       </div>
