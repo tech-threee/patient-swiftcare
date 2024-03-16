@@ -50,7 +50,7 @@ const LoginForm = () => {
           </div>
 
           {/**Button */}
-          <AuthButtons />
+          <AuthButtons text={"Log into account "} />
 
           {/**Login Question */}
           <div className="flex flex-row items-center space-x-2">
