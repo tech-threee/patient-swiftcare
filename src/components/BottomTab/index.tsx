@@ -18,8 +18,8 @@ const BottomNavbar = () => {
   };
 
   return (
-    <div className="md:hidden fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-white border border-[#D9D9D9] bottom-[0.5px] left-1/2 ">
-      <div className="grid h-full max-w-lg grid-cols-5 mx-auto">
+    <div className="md:hidden fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-white border border-[#D9D9D9] bottom-[0.5px] left-1/2">
+      <div className="grid h-full max-w-lg grid-cols-4 mx-auto">
         {navLinks.map((link, index) => (
           <button
             key={index}
@@ -28,7 +28,6 @@ const BottomNavbar = () => {
             className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 group"
             onClick={() => handleTooltipToggle(link.path)}
           >
-            {/* Add conditional class to change the icon color when active */}
             {React.cloneElement(link.icon, {
               className:
                 location.pathname === link.path ? "text-[#0067FF]" : "",
