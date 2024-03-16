@@ -3,7 +3,7 @@ import BlogCard from "../../widgets/Cards/BlogCard";
 
 const HealthBlog = () => {
   return (
-    <main className="mt-10 space-y-0">
+    <main className="space-y-0 mx-5 mb-[10rem]">
       <div className="container">
         <div className="space-y-8">
           <div>

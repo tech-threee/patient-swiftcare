@@ -6,7 +6,7 @@ import heroImage3 from "../../assets/images/hero-img03.png";
 
 const HomePage = () => {
   return (
-    <main className="mb-[10rem]">
+    <main className="mb-[10rem] md:mx-5">
       {/** ====== Hero Section ====== */}
 
       <>

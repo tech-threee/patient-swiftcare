@@ -2,8 +2,8 @@ import { PaperClipIcon } from "@heroicons/react/20/solid";
 
 export default function Profile() {
   return (
-    <main className="mt-10">
-      <div className="mx-10 mb-[10rem]">
+    <main>
+      <div className="mx-2 sm:mx-2 md:mx-10 mb-[10rem]">
         <div className="px-4 sm:px-0">
           <h1 className="text-[26px] leading-[46px] text-headingColor font-[800] md:text-[40px] md:leading-[70px] overflow-hidden">
             Patient Information

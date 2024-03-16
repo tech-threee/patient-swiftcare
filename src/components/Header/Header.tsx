@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
               <li key={index}>
                 <NavLink
                   to={link.path}
-                  className="flex flex-row items-center gap-4"
+                  className="flex flex-row items-center gap-2"
                 >
                   {/**Import and use icons */}
                   {link.icon}

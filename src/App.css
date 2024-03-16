@@ -28,10 +28,11 @@ body {
 }
 
 .navbar {
-  height: 100px;
+  height: 80px;
   position: relative;
   z-index: 100;
   overflow: hidden;
+  margin-bottom: 20px;
 }
 
 .menu-icon {
@@ -53,23 +54,24 @@ body {
   font-weight: 400;
   color: #000000;
   text-decoration: none;
-}
-
-.nav-elements ul a.active {
-  color: #2370dd;
-  font-weight: 500;
   position: relative;
   overflow: hidden;
 }
 
-.nav-elements ul a.active::after {
+.nav-elements ul a::after {
   content: "";
   position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 50%;
+  bottom: -2px;
+  left: 50%;
+  width: 0%;
   height: 3px;
   background-color: #2370dd;
+  transition: all 0.3s ease;
+}
+
+.nav-elements ul a.active::after {
+  width: 50%;
+  left: 0%;
 }
 
 @media (max-width: 768px) {
