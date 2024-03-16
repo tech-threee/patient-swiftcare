@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import AppShortcutIcon from "@mui/icons-material/AppShortcut";
@@ -7,7 +6,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 export type NavLinkItem = {
   display: string;
   path: string;
-  icon: ReactNode;
+  icon: React.ReactElement;
 };
 
 export const navLinks: NavLinkItem[] = [
