@@ -1,13 +1,23 @@
 import { Link } from "react-router-dom";
 import AuthButtons from "../../../widgets/Buttons/AuthButtons";
+import { useSendOtpMutation } from "../../../queries/auth/useLoginMutation/index";
+import { useState } from "react";
 
 const LoginForm = () => {
+  const sendOtpMutation = useSendOtpMutation();
+  const [email, setEmail] = useState("");
+
+  const handleSendOtp = (email: string) => {
+    sendOtpMutation.mutate({ email });
+    console.log("I goot clicked ");
+  };
+
   return (
     <div className="h-[100vh] w-full flex flex-col justify-center">
       <div className="p-10 space-y-10">
         <div className="flex flex-col items-center md:items-start">
-          <h1 className="font-bold text-2xl leading-10">Create An account</h1>
-          <p className="text-sm text-gray-600">Welcome to swift connect</p>
+          <h1 className="font-bold text-2xl leading-10">Log into account</h1>
+          <p className="text-sm text-gray-600">Welcome back to swift connect</p>
         </div>
 
         {/**Form*/}
@@ -18,9 +28,10 @@ const LoginForm = () => {
             </label>
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-password"
-              type="password"
+              type="email"
               placeholder="example@gmail.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
@@ -50,7 +61,7 @@ const LoginForm = () => {
           </div>
 
           {/**Button */}
-          <AuthButtons />
+          <AuthButtons onSendOtp={handleSendOtp} text={"Log into account"} />
 
           {/**Login Question */}
           <div className="flex flex-row items-center space-x-2">
@@ -67,4 +78,5 @@ const LoginForm = () => {
     </div>
   );
 };
+
 export default LoginForm;
