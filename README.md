@@ -1,35 +1,36 @@
-# React + TypeScript + Vite
+# Patient Console
+This repository contains the console for the executive staff of the hospital like the Board of Directors, Chief Executive Officers and so on. This console is primarily for viewing employees, patients, managing leave schedules, viewing and managing payslips and viewing automated reports.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+NB: For the first release of this software, the features currently available are
+- Viewing employees
+- Viewing patient details
+- Account authentication and management
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How To Access
+The software is hosted using Netlify using [this url](https://sudo-swiftcare.netlify.app)
 
-## Expanding the ESLint configuration
+## How To Use 
+1. In order to get access to the application, one would have to login by providing a `Staff ID` and a `pin`
+![](/screenshots/login.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. After logging in, the user will see the Dashoard page which is a summary of the statistics of the system.
+![](/screenshots/dashboard.png)
 
-- Configure the top-level `parserOptions` property like this:
+3. From there, they can visit the messages page to view in-app messages sent from other users of the application by using the navigation bar on the left hand side
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+4. The can visit the staff page to view details about the staff of the hospital
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# swiftcare-connect
-# patient-swiftcare
-# patient-swiftcare
-# patient-swiftcare
-# patient-swiftcare
+5. They can also visit the patients page to view relevant information about the patients that have registered onto the system
+
+The long-term goal of the software is to include features to allow the user view the leave schedules of emplyees, viewsystem generated reports and view relevant invoices made using the system for further enhance their management.
+
+
+## Stack
+This software was built using 
+1. [Next.js](https://nextjs.org/)
+2. [TailwindCSS](https://tailwindcss.org/)
+3. [Shadcn UI](https://ui.shadcn.com/)
+
+## Design System
+Because this system is part of a software suite (SwiftCare Connec+), it shares the same design and components as the other consoles of the software suite however, the only different is that the primary color is purple - `#9C27B0`
