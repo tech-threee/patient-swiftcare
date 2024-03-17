@@ -1,36 +1,35 @@
-# Patient Console
-This repository contains the console for the executive staff of the hospital like the Board of Directors, Chief Executive Officers and so on. This console is primarily for viewing employees, patients, managing leave schedules, viewing and managing payslips and viewing automated reports.
+<img width="1680" alt="Screenshot 2024-03-17 at 3 04 38 AM" src="https://github.com/tech-threee/patient-swiftcare/assets/86974174/012d81be-e781-48b8-b50f-88d69308c00c"># Patient Console
+This repository contains the console for the patient of the hospital. This console is primarily for paitent to get their medical records, book appointement, health blog (many more, but we stick with these 4 for now).
 
 
 NB: For the first release of this software, the features currently available are
-- Viewing employees
-- Viewing patient details
+- Getting Health Blog
+- Book Appointement
 - Account authentication and management
+- Medical Records
 
 ## How To Access
-The software is hosted using Netlify using [this url](https://sudo-swiftcare.netlify.app)
+The software is hosted using Netlify using [this url](https://swiftcare-connect.netlify.app/)
 
 ## How To Use 
-1. In order to get access to the application, one would have to login by providing a `Staff ID` and a `pin`
+1. In order to get acces to the application, one would have to login by providing a `Email` and a `Otp Code`
 ![](/screenshots/login.png)
 
-2. After logging in, the user will see the Dashoard page which is a summary of the statistics of the system.
+2. After logging in, the user will see the Home page which is a summary of the hospital view.
 ![](/screenshots/dashboard.png)
 
-3. From there, they can visit the messages page to view in-app messages sent from other users of the application by using the navigation bar on the left hand side
+3. From there, they can visit the health page to view blog, appointement page to book appointement
 
-4. The can visit the staff page to view details about the staff of the hospital
+4. They can visit the profile page to view details about their medical record and data.
 
-5. They can also visit the patients page to view relevant information about the patients that have registered onto the system
-
-The long-term goal of the software is to include features to allow the user view the leave schedules of emplyees, viewsystem generated reports and view relevant invoices made using the system for further enhance their management.
+The long-term goal of the software is to include features to allow the user view the leave schedules of emplyees, renew their hospital card, chat with virtually with their health assistance, include hospital payment and mobile application version.
 
 
 ## Stack
 This software was built using 
-1. [Next.js](https://nextjs.org/)
+1. [React]((https://react.dev/))
 2. [TailwindCSS](https://tailwindcss.org/)
-3. [Shadcn UI](https://ui.shadcn.com/)
+3. [Vite](https://vitejs.dev/)
 
 ## Design System
 Because this system is part of a software suite (SwiftCare Connec+), it shares the same design and components as the other consoles of the software suite however, the only different is that the primary color is purple - `#9C27B0`
