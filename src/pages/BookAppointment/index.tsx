@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-
-const SPECIALITIES = {
-  surgery: "SURGEON",
-  dental_problem: "DENTAL PROBLEM",
-  regular_checkup: "REGULAR CHECKUP",
-  maternity: "MATERNITY PROBLEM",
-  children: "CHILDREN PROBLEM",
-  lab: "LAB PROBLEM",
-};
+import { SPECIALITIES } from "../../api/bookAppointment.api";
 
 const BookAppointment: React.FC = () => {
   const [appointment, setAppointment] = useState({
