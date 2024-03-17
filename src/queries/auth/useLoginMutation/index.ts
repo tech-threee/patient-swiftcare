@@ -3,10 +3,11 @@ import {
   OtpRequest,
   sendOtp,
   LoginRequest,
-  login,
+  loginUser,
 } from "../../../api/auth.api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useUser } from "../../../hooks/auth/useUser";
 
 export const useSendOtpMutation = () => {
   const navigate = useNavigate();
@@ -29,11 +30,10 @@ export const useSendOtpMutation = () => {
         theme: "light",
       });
 
-      navigate("/home");
+      navigate("/verifyEmail");
     },
     onError: (error: any) => {
       toast.error("Error Occurred");
-      console.log(error);
     },
     onMutate: () => {
       console.log("pending");
@@ -42,9 +42,22 @@ export const useSendOtpMutation = () => {
 };
 
 export const useLoginMutation = () => {
+  const { login } = useUser();
+
   return useMutation({
     mutationFn: (reqBody: LoginRequest) => {
-      return login(reqBody).then((res) => res.data);
+      return loginUser(reqBody).then((res) => res.data);
+    },
+    onSuccess: (data) => {
+      console.log("Successfully Working....", data);
+      login(data);
+    },
+    onError: (error: any) => {
+      console.log("Successful Error");
+      console.log(error);
+    },
+    onMutate: () => {
+      console.log("pending");
     },
   });
 };

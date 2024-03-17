@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { User, UserContextType } from "../../types/user.types";
+import { User, UserContextType, UserData } from "../../types/user.types";
 
 export const UserContext = createContext<UserContextType | undefined>(
   undefined
@@ -16,16 +16,13 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   useEffect(() => {
     const loadUser = async () => {
       const storedUser = await AsyncStorage.getItem("user");
-      if (storedUser) {
-        setUser(JSON.parse(storedUser));
-      }
+      if (storedUser) setUser(JSON.parse(storedUser));
     };
     loadUser();
   }, []);
 
-  const login = async (username: string) => {
-    const token = "fake-token";
-    const newUser = { username, token };
+  const login = async (data: UserData) => {
+    const newUser = { success: true, data };
     setUser(newUser);
     await AsyncStorage.setItem("user", JSON.stringify(newUser));
   };

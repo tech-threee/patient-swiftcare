@@ -3,7 +3,7 @@ export type UserCredentials = {
   email: string;
   phone: number;
   dob: string;
-  otp: number;
+  otp: string[];
 };
 
 export type UserCredentialsContextType = {

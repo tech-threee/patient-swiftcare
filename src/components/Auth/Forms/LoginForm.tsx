@@ -7,8 +7,8 @@ const LoginForm = () => {
   const sendOtpMutation = useSendOtpMutation();
   const { userCredentials, setUserCredentials } = useUserCredentials();
 
-  const handleSendOtp = (email: string) => {
-    sendOtpMutation.mutate({ email });
+  const handleSendOtp = () => {
+    sendOtpMutation.mutate({ email: userCredentials.email });
   };
 
   return (
@@ -67,8 +67,12 @@ const LoginForm = () => {
           {/**Button */}
 
           <AuthButtons
-            handleSendOtpAction={handleSendOtp}
-            text={"Log into account "}
+            onClick={handleSendOtp}
+            text={
+              sendOtpMutation.isPending
+                ? "Sending otp......"
+                : "Log into account "
+            }
           />
 
           {/**Login Question */}

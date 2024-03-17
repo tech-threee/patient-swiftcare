@@ -20,7 +20,7 @@ export const UserCredentialsProvider: React.FC<
     email: "",
     phone: 0,
     dob: "",
-    otp: 0,
+    otp: [],
   });
 
   return (

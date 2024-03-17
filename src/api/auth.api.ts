@@ -8,6 +8,6 @@ export const sendOtp = async (body: OtpRequest) => {
 
 // Verify Patient Otp And Login
 export type LoginRequest = OtpRequest & { otp: string };
-export const login = async (body: LoginRequest) => {
+export const loginUser = async (body: LoginRequest) => {
   return axiosClient.post("/auth/patient/verify-otp", body);
 };
