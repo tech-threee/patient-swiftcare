@@ -5,9 +5,9 @@ import {
   LoginRequest,
   loginUser,
 } from "../../../api/auth.api";
-
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import { useUser } from "../../../hooks/auth/useUser";
+import { toast } from "react-toastify";
 
 export const useSendOtpMutation = () => {
   const navigate = useNavigate();
@@ -17,11 +17,11 @@ export const useSendOtpMutation = () => {
       return sendOtp({ email: reqBody.email }).then((res) => res.data); // Pass an object with the email property
     },
     onSuccess: () => {
-      console.log("Sent");
-
+      toast.success("Verification code sent successfully");
       navigate("/verifyEmail");
     },
     onError: () => {
+      toast.error("An Error occurred");
       console.log("Successful Error");
     },
     onMutate: () => {
@@ -38,11 +38,11 @@ export const useLoginMutation = () => {
       return loginUser(reqBody).then((res) => res.data);
     },
     onSuccess: (data) => {
-      console.log("Successfully Working....", data);
+      toast.success("Log in Successfully");
       login(data);
     },
-    onError: () => {
-      console.log("Successful Error");
+    onError: (error: any) => {
+      toast.error(error.message);
     },
     onMutate: () => {
       console.log("pending");

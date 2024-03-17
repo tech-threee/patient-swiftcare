@@ -1,7 +1,7 @@
 export type UserCredentials = {
   name: string;
   email: string;
-  phone: number;
+  phone: string;
   dob: string;
   otp: string[];
 };

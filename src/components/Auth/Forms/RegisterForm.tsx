@@ -1,9 +1,19 @@
 import { Link } from "react-router-dom";
 import AuthButtons from "../../../widgets/Buttons/AuthButtons";
+import { useSignUpMutation } from "../../../queries/auth/useSignUpMutation";
+import { useUserCredentials } from "../../../hooks/auth/useUserCrendentials";
 
 const RegisterForm = () => {
+  const { userCredentials, setUserCredentials } = useUserCredentials();
+  const registerMutation = useSignUpMutation();
+
   const handleAction = () => {
-    console.log("welcome");
+    registerMutation.mutate({
+      name: userCredentials.name,
+      email: userCredentials.email,
+      phone: userCredentials.phone,
+      dob: userCredentials.dob,
+    });
   };
 
   return (
@@ -22,8 +32,15 @@ const RegisterForm = () => {
             </label>
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-password"
-              type="password"
+              id="email"
+              type="email"
+              value={userCredentials.email}
+              onChange={(e) =>
+                setUserCredentials({
+                  ...userCredentials,
+                  email: e.target.value,
+                })
+              }
               placeholder="example@gmail.com"
             />
           </div>
@@ -34,8 +51,15 @@ const RegisterForm = () => {
             </label>
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-password"
-              type="password"
+              id="name"
+              type="name"
+              value={userCredentials.name}
+              onChange={(e) =>
+                setUserCredentials({
+                  ...userCredentials,
+                  name: e.target.value,
+                })
+              }
               placeholder="John Doe"
             />
           </div>
@@ -48,7 +72,33 @@ const RegisterForm = () => {
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-password"
               type="number"
+              value={userCredentials.phone}
+              onChange={(e) =>
+                setUserCredentials({
+                  ...userCredentials,
+                  phone: e.target.value,
+                })
+              }
               placeholder="+233 5690...."
+            />
+          </div>
+
+          <div className="w-full">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              Date of Birth
+            </label>
+            <input
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="dob"
+              type="date"
+              value={userCredentials.dob}
+              onChange={(e) =>
+                setUserCredentials({
+                  ...userCredentials,
+                  dob: e.target.value,
+                })
+              }
+              placeholder="YYYY-MM-DD"
             />
           </div>
 
@@ -78,7 +128,14 @@ const RegisterForm = () => {
           </div>
 
           {/**Button */}
-          <AuthButtons onClick={handleAction} text={"Create an account"} />
+          <AuthButtons
+            onClick={handleAction}
+            text={
+              registerMutation.isPending
+                ? "Creating account..."
+                : "Create an account"
+            }
+          />
 
           {/**Login Question */}
           <div className="flex flex-row items-center space-x-2">
