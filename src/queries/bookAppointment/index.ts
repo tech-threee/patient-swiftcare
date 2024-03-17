@@ -13,7 +13,7 @@ export const useBookAppointmentMutation = (token: string) => {
     onSuccess: () => {
       toast.success("Appointment booked successfully");
     },
-    onError: (error: Error) => {
+    onError: () => {
       toast.error("Error booking appointment:");
     },
     onMutate: () => {
