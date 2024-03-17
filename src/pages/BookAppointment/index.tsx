@@ -11,6 +11,9 @@ type AppointmentWithTime = AppointmentRequest & { time: string };
 
 const BookAppointment: React.FC = () => {
   const { user } = useUser();
+
+  console.log("User ", user);
+
   const token = user?.data?.data?.token;
 
   if (!token) return;
