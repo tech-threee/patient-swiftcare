@@ -32,7 +32,7 @@ export const useSendOtpMutation = () => {
 
       navigate("/verifyEmail");
     },
-    onError: (error: any) => {
+    onError: () => {
       toast.error("Error Occurred");
     },
     onMutate: () => {
@@ -52,9 +52,8 @@ export const useLoginMutation = () => {
       console.log("Successfully Working....", data);
       login(data);
     },
-    onError: (error: any) => {
+    onError: () => {
       console.log("Successful Error");
-      console.log(error);
     },
     onMutate: () => {
       console.log("pending");

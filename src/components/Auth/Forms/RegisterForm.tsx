@@ -78,7 +78,7 @@ const RegisterForm = () => {
           </div>
 
           {/**Button */}
-          <AuthButtons handleAction={handleAction} text={"Create an account"} />
+          <AuthButtons onClick={handleAction} text={"Create an account"} />
 
           {/**Login Question */}
           <div className="flex flex-row items-center space-x-2">
