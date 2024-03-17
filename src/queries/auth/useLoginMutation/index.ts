@@ -5,7 +5,7 @@ import {
   LoginRequest,
   loginUser,
 } from "../../../api/auth.api";
-import { toast } from "react-toastify";
+
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { useUser } from "../../../hooks/auth/useUser";
 
@@ -19,21 +19,10 @@ export const useSendOtpMutation = () => {
     onSuccess: () => {
       console.log("Sent");
 
-      toast.success("🦄 OTP sent successfully", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-
       navigate("/verifyEmail");
     },
     onError: () => {
-      toast.error("Error Occurred");
+      console.log("Successful Error");
     },
     onMutate: () => {
       console.log("pending");
