@@ -7,6 +7,7 @@ NB: For the first release of this software, the features currently available are
 - Book Appointement
 - Account authentication and management
 - Medical Records
+- More focus was made on the mobile view
 
 ## How To Access
 The software is hosted using Netlify using [this url](https://swiftcare-connect.netlify.app/)
