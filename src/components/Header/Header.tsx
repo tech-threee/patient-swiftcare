@@ -3,8 +3,10 @@ import { NavLink } from "react-router-dom";
 import { HiMenuAlt3 } from "react-icons/hi";
 import brandLogo from "../../assets/images/logo.png";
 import { navLinks } from "../../constant/index";
+import { useUser } from "../../hooks/auth/useUser";
 
 const Navbar: React.FC = () => {
+  const { logout } = useUser();
   const [showNavbar, setShowNavbar] = useState<boolean>(false);
 
   const handleShowNavbar = () => {
@@ -41,9 +43,12 @@ const Navbar: React.FC = () => {
           </ul>
         </div>
 
-        <div className="hidden">
-          <h1>todo: Add Profile</h1>
-        </div>
+        <button
+          onClick={logout}
+          className="bg-blue-500 text-white font-bold p-2 rounded-2xl"
+        >
+          Log out
+        </button>
       </div>
     </nav>
   );

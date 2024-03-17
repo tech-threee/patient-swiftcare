@@ -18,7 +18,7 @@ export const UserCredentialsProvider: React.FC<
   const [userCredentials, setUserCredentials] = useState<UserCredentials>({
     name: "",
     email: "",
-    phone: 0,
+    phone: "",
     dob: "",
     otp: [],
   });
