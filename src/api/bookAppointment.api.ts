@@ -15,7 +15,6 @@ export interface AppointmentRequest {
     email: string;
   };
   date: string;
-  time: string;
   issue: keyof typeof SPECIALITIES;
 }
 
@@ -23,10 +22,18 @@ export const bookAppointment = async (
   data: AppointmentRequest,
   token: string
 ) => {
-  const response = await axiosClient.post("/appointments", data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  return response.data;
+  try {
+    return console.log("Api Book Data ", data);
+
+    const response = await axiosClient.post("/booking", data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    console.log("Booking Response ", response);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
 };

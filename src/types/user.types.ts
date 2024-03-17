@@ -1,4 +1,15 @@
 export type UserData = {
+  data: {
+    dob?: string;
+    email: string;
+    emergency_contacts: string[];
+    name: string;
+    otp: string;
+    phone: number;
+    token: string;
+    pid: number;
+    _id: string;
+  };
   dob?: string;
   email: string;
   emergency_contacts: string[];

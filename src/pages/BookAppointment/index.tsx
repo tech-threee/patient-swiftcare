@@ -1,31 +1,74 @@
 import React, { useState } from "react";
-import { SPECIALITIES } from "../../api/bookAppointment.api";
+import {
+  AppointmentRequest,
+  SPECIALITIES,
+} from "../../api/bookAppointment.api";
+import { useBookAppointmentMutation } from "../../queries/bookAppointment";
+import { useUser } from "../../hooks/auth/useUser";
+import AuthButtons from "../../widgets/Buttons/AuthButtons";
+
+type AppointmentWithTime = AppointmentRequest & { time: string };
 
 const BookAppointment: React.FC = () => {
-  const [appointment, setAppointment] = useState({
-    name: "",
-    email: "",
+  const { user } = useUser();
+  const token = user?.data?.data?.token;
+
+  if (!token) return;
+
+  const {
+    mutate: bookAppointment,
+    isError,
+    isPending,
+    isSuccess,
+  } = useBookAppointmentMutation(token);
+  const [appointment, setAppointment] = useState<AppointmentWithTime>({
+    patient: {
+      name: "",
+      email: "",
+    },
     date: "",
     time: "",
-    issue: "",
+    issue: "surgery",
   });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    setAppointment({ ...appointment, [e.target.name]: e.target.value });
+    if (e.target.name === "name" || e.target.name === "email") {
+      setAppointment({
+        ...appointment,
+        patient: { ...appointment.patient, [e.target.name]: e.target.value },
+      });
+    } else {
+      setAppointment({ ...appointment, [e.target.name]: e.target.value });
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log(appointment);
-    // Submit the form data to the server or handle it as needed
+  const handleBookAppointment = () => {
+    const combinedDateTime = new Date(
+      `${appointment.date}T${appointment.time}`
+    ).toISOString();
+
+    const appointmentData: AppointmentRequest = {
+      patient: {
+        name: appointment.patient.name,
+        email: appointment.patient.email,
+      },
+      date: combinedDateTime,
+      issue: appointment.issue,
+    };
+
+    bookAppointment(appointmentData);
+
+    console.log("IsLoading ", isPending);
+    console.log("Success ", isSuccess);
+    console.log("Error ", isError);
   };
 
   return (
     <div className="max-w-md mx-auto bg-gray-100 shadow-lg rounded-lg p-6">
       <h2 className="text-2xl font-semibold mb-4">Book an Appointment</h2>
-      <form onSubmit={handleSubmit}>
+      <div>
         <div className="mb-4">
           <label
             htmlFor="name"
@@ -37,7 +80,7 @@ const BookAppointment: React.FC = () => {
             type="text"
             id="name"
             name="name"
-            value={appointment.name}
+            value={appointment.patient.name}
             onChange={handleChange}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3"
             required
@@ -54,7 +97,7 @@ const BookAppointment: React.FC = () => {
             type="email"
             id="email"
             name="email"
-            value={appointment.email}
+            value={appointment.patient.email}
             onChange={handleChange}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3"
             required
@@ -117,13 +160,14 @@ const BookAppointment: React.FC = () => {
             ))}
           </select>
         </div>
-        <button
-          type="submit"
-          className="w-full btn text-white rounded-md py-2 font-medium  focus:outline-none focus:ring-2  focus:ring-offset-2"
-        >
-          Book Appointment
-        </button>
-      </form>
+
+        <div>
+          <AuthButtons
+            onClick={handleBookAppointment}
+            text={isPending ? "Booking Appointment......" : "Book Appointment"}
+          />
+        </div>
+      </div>
     </div>
   );
 };
