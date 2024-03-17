@@ -3,6 +3,7 @@ import {
   bookAppointment,
   AppointmentRequest,
 } from "../../api/bookAppointment.api";
+import { toast } from "react-toastify";
 
 export const useBookAppointmentMutation = (token: string) => {
   return useMutation({
@@ -10,13 +11,13 @@ export const useBookAppointmentMutation = (token: string) => {
       return await bookAppointment(appointmentData, token);
     },
     onSuccess: () => {
-      console.log("Appointment booked successfully");
+      toast.success("Appointment booked successfully");
     },
     onError: (error: Error) => {
-      console.error("Error booking appointment:", error);
+      toast.error("Error booking appointment:");
     },
     onMutate: () => {
-      console.log("Waiting......");
+      toast.info("Waiting......");
     },
   });
 };
