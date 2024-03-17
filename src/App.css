@@ -56,6 +56,9 @@ body {
   position: relative;
   overflow: hidden;
 }
+.nav-elements ul a.active {
+  color: #2370dd;
+}
 
 .nav-elements ul a::after {
   content: "";
